@@ -34,7 +34,7 @@ namespace SnowBy60int
         }
         Graphics Canvas;
         Random rnd;
-        long _frameCount = 0;
+        long FrameCount = 0;
         private Snowflake[] Snowflakes;
         readonly int SnowflakeCount = 100;
 
@@ -70,7 +70,7 @@ namespace SnowBy60int
         private void TimerUpdate_Tick(object sender, EventArgs e)
         {
             MainCanvas.Invalidate();
-            Interlocked.Increment(ref _frameCount);
+            Interlocked.Increment(ref FrameCount);
         }
 
         private void MainCanvas_Paint_1(object sender, PaintEventArgs e)
