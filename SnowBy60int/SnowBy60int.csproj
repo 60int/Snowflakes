@@ -7,7 +7,21 @@
     <Authors>60int</Authors>
     <Product>60int</Product>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <StartupObject></StartupObject>
+    <PackageIcon>Snowflake32-1-150x150.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\Assets\Icons\Custom\Snowflake32-1-150x150.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">

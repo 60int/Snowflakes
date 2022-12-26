@@ -44,6 +44,7 @@ namespace SnowBy60int
         {
             InitializeComponent();
             Start();
+            TopMost = true;
         }
         private void MakeFirstSnowflake()
         {

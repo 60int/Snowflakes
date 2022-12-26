@@ -30,6 +30,7 @@ namespace SnowBy60int
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SnowForm));
             this.TimerUpdate = new System.Windows.Forms.Timer(this.components);
             this.MainCanvas = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.MainCanvas)).BeginInit();
@@ -44,6 +45,7 @@ namespace SnowBy60int
             // 
             this.MainCanvas.BackColor = System.Drawing.Color.Black;
             this.MainCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainCanvas.InitialImage = global::SnowBy60int.Properties.Resources.Snowflake32_1;
             this.MainCanvas.Location = new System.Drawing.Point(0, 0);
             this.MainCanvas.Name = "MainCanvas";
             this.MainCanvas.Size = new System.Drawing.Size(1904, 1041);
@@ -60,6 +62,7 @@ namespace SnowBy60int
             this.Controls.Add(this.MainCanvas);
             this.ForeColor = System.Drawing.Color.Transparent;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SnowForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Snowflakes";
