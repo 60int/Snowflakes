@@ -36,7 +36,7 @@ namespace SnowBy60int
         Random rnd;
         long FrameCount = 0;
         private Snowflake[] Snowflakes;
-        readonly int SnowflakeCount = 100;
+        readonly int SnowflakeCount = 1080;
 
         readonly static Image flake1 = Resources.Snowflake32_1;
 
@@ -50,7 +50,7 @@ namespace SnowBy60int
             for (int i = 0; i < SnowflakeCount; i++)
             {
                 float addSpeed = 3 + (float)rnd.NextDouble() + (float)rnd.NextDouble() + (float)rnd.NextDouble();
-                Snowflakes[i] = new Snowflake(rnd.Next(-100, 1920), rnd.Next(0, 1920), addSpeed, rnd.Next(4, 16), 1);
+                Snowflakes[i] = new Snowflake(rnd.Next(-1080, 1920), rnd.Next(0, 1920), addSpeed, rnd.Next(4, 16), 1);
             }
         }
         private void Start()
@@ -81,11 +81,11 @@ namespace SnowBy60int
             for (int i = 0; i < SnowflakeCount; i++)
             {
                 Canvas.DrawImage(flake1, Snowflakes[i].X, Snowflakes[i].Y, Snowflakes[i].Size, Snowflakes[i].Size);
-                Snowflakes[i].Time += 0.2f;
+                Snowflakes[i].Time += 20f;
 
                 if (Snowflakes[i].Y > 1920)
                 {
-                    Snowflakes[i].Y = -15;
+                    Snowflakes[i].Y = -1;
                     Snowflakes[i].Time = 0;
                 }
                 if (Snowflakes[i].X > 580 & Snowflakes[i].X < -5)
