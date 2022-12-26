@@ -42,7 +42,7 @@ namespace SnowBy60int
             // 
             // MainCanvas
             // 
-            this.MainCanvas.BackColor = System.Drawing.Color.Transparent;
+            this.MainCanvas.BackColor = System.Drawing.Color.Black;
             this.MainCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainCanvas.Location = new System.Drawing.Point(0, 0);
             this.MainCanvas.Name = "MainCanvas";
@@ -58,9 +58,12 @@ namespace SnowBy60int
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.MainCanvas);
+            this.ForeColor = System.Drawing.Color.Transparent;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SnowForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Snowflakes";
+            this.TransparencyKey = System.Drawing.Color.Black;
             ((System.ComponentModel.ISupportInitialize)(this.MainCanvas)).EndInit();
             this.ResumeLayout(false);
 
