@@ -22,14 +22,16 @@ namespace SnowBy60int
             public float Speed { get; set; }
             public float Size { get; set; }
             public float Time { get; set; }
+            public Bitmap Img { get; set; }
 
-            public Snowflake(float x, float y, float speed, float size, float time)
+            public Snowflake(float x, float y, float speed, float size, float time, Bitmap img)
             {
                 X = x;
                 Y = y;
                 Speed = speed;
                 Size = size;
                 Time = time;
+                Img = img;
             }
         }
         Graphics Canvas;
@@ -38,20 +40,19 @@ namespace SnowBy60int
         private Snowflake[] Snowflakes;
         readonly int SnowflakeCount = 1080;
 
-        readonly static Image flake1 = Resources.Snowflake32_1;
+        readonly static Bitmap flake1 = new(Resources.Snowflake32_1);
 
         public SnowForm()
         {
             InitializeComponent();
             Start();
-            TopMost = true;
         }
         private void MakeFirstSnowflake()
         {
             for (int i = 0; i < SnowflakeCount; i++)
             {
-                float addSpeed = 3 + (float)rnd.NextDouble() + (float)rnd.NextDouble() + (float)rnd.NextDouble();
-                Snowflakes[i] = new Snowflake(rnd.Next(-1080, 1920), rnd.Next(0, 1920), addSpeed, rnd.Next(4, 16), 1);
+                float addSpeed = 1 + (float)rnd.NextDouble() + (float)rnd.NextDouble();
+                Snowflakes[i] = new Snowflake(rnd.Next(-1080, 1920), rnd.Next(0, 1920), addSpeed, rnd.Next(4, 16), 1, flake1);
             }
         }
         private void Start()
@@ -70,6 +71,7 @@ namespace SnowBy60int
         }
         private void TimerUpdate_Tick(object sender, EventArgs e)
         {
+            TimerUpdate.Interval = 16;
             MainCanvas.Invalidate();
             Interlocked.Increment(ref FrameCount);
         }
@@ -78,10 +80,10 @@ namespace SnowBy60int
         {
             Width = 1920;
             Height = 1080;
-            Canvas.Clear(Color.Transparent);
+            Canvas.Clear(Color.White);
             for (int i = 0; i < SnowflakeCount; i++)
             {
-                Canvas.DrawImage(flake1, Snowflakes[i].X, Snowflakes[i].Y, Snowflakes[i].Size, Snowflakes[i].Size);
+                Canvas.DrawImage(Snowflakes[i].Img, Snowflakes[i].X, Snowflakes[i].Y, Snowflakes[i].Size, Snowflakes[i].Size);
                 Snowflakes[i].Time += 20f;
 
                 if (Snowflakes[i].Y > 1920)
@@ -97,6 +99,16 @@ namespace SnowBy60int
                 {
                     Snowflakes[i].Y += Snowflakes[i].Speed + rnd.Next(-1, 1);
                 }
+            }
+        }
+        //Keep window always on top
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var cp = base.CreateParams;
+                cp.ExStyle |= 8;
+                return cp;
             }
         }
     }
