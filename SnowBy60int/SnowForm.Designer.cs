@@ -39,6 +39,7 @@ namespace SnowBy60int
             // TimerUpdate
             // 
             this.TimerUpdate.Enabled = true;
+            this.TimerUpdate.Interval = 16;
             this.TimerUpdate.Tick += new System.EventHandler(this.TimerUpdate_Tick);
             // 
             // MainCanvas

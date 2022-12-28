@@ -38,7 +38,7 @@ namespace SnowBy60int
         Random rnd;
         long FrameCount = 0;
         private Snowflake[] Snowflakes;
-        readonly int SnowflakeCount = 1080;
+        readonly int SnowflakeCount = 480;
 
         readonly static Bitmap flake1 = new(Resources.Snowflake32_1);
 
@@ -51,7 +51,7 @@ namespace SnowBy60int
         {
             for (int i = 0; i < SnowflakeCount; i++)
             {
-                float addSpeed = 1 + (float)rnd.NextDouble() + (float)rnd.NextDouble();
+                float addSpeed = 2 + (float)rnd.NextDouble();
                 Snowflakes[i] = new Snowflake(rnd.Next(-1080, 1920), rnd.Next(0, 1920), addSpeed, rnd.Next(4, 16), 1, flake1);
             }
         }
@@ -61,7 +61,7 @@ namespace SnowBy60int
 
             Canvas = MainCanvas.CreateGraphics();
 
-            Bitmap myBitmap = new Bitmap(Width, Height);
+            Bitmap myBitmap = new(Width, Height);
 
             MainCanvas.Image = myBitmap;
 
@@ -71,9 +71,9 @@ namespace SnowBy60int
         }
         private void TimerUpdate_Tick(object sender, EventArgs e)
         {
-            TimerUpdate.Interval = 16;
             MainCanvas.Invalidate();
             Interlocked.Increment(ref FrameCount);
+            GC.Collect();
         }
 
         private void MainCanvas_Paint_1(object sender, PaintEventArgs e)
@@ -84,14 +84,14 @@ namespace SnowBy60int
             for (int i = 0; i < SnowflakeCount; i++)
             {
                 Canvas.DrawImage(Snowflakes[i].Img, Snowflakes[i].X, Snowflakes[i].Y, Snowflakes[i].Size, Snowflakes[i].Size);
-                Snowflakes[i].Time += 20f;
+                Snowflakes[i].Time += 0.2f;
 
                 if (Snowflakes[i].Y > 1920)
                 {
                     Snowflakes[i].Y = -1;
                     Snowflakes[i].Time = 0;
                 }
-                if (Snowflakes[i].X > 580 & Snowflakes[i].X < -5)
+                if (Snowflakes[i].X > 1920 & Snowflakes[i].X < -5)
                 {
                     Snowflakes[i].X = rnd.Next(0, 1920);
                 }
