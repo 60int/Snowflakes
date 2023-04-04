@@ -97,7 +97,7 @@ namespace SnowBy60int
                 }
                 else
                 {
-                    Snowflakes[i].Y += Snowflakes[i].Speed + rnd.Next(-1, 1);
+                    Snowflakes[i].Y += Snowflakes[i].Speed + rnd.Next(-1, 0);
                 }
             }
         }
