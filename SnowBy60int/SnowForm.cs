@@ -49,9 +49,9 @@ namespace SnowBy60int
         }
         private void MakeFirstSnowflake()
         {
+            float addSpeed = 2 + (float)rnd.NextDouble();
             for (int i = 0; i < SnowflakeCount; i++)
             {
-                float addSpeed = 2 + (float)rnd.NextDouble();
                 Snowflakes[i] = new Snowflake(rnd.Next(-1080, 1920), rnd.Next(0, 1920), addSpeed, rnd.Next(4, 16), 1, flake1);
             }
         }
